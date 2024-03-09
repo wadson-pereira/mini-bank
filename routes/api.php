@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\v1\ProductController;
-use App\Http\Controllers\Api\v1\SaleController;
+use App\Http\Controllers\Api\v1\AccountControllerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix("/v1")->group(function () {
-
+    Route::post("accounts", [AccountControllerController::class, 'create']);
 });
