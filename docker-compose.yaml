@@ -1,0 +1,76 @@
+version: '3.8'
+
+volumes:
+  mysql_data: { }
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bank-account-management-app
+    volumes:
+      - ./:/app
+    networks:
+      - api
+    depends_on:
+      - redis
+      - database
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./docker-configs/nginx:/etc/nginx/conf.d
+      - ./:/app
+    depends_on:
+      - app
+    networks:
+      - api
+
+  redis:
+    image: redis:7.2.4
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - api
+
+  grafana:
+    image: grafana/grafana:10.3.3
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    networks:
+      - api
+
+  prometheus:
+    image: prom/prometheus:v2.0.0
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./docker-configs/prometheus:/etc/prometheus
+    networks:
+      - api
+
+  database:
+    image: mysql:8.3.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker-configs/mysql/entrypoint:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    networks:
+      - api
+
+networks:
+  api:
+    driver: bridge
+
