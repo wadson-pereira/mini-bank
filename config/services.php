@@ -29,5 +29,9 @@ return [
         'key' => env('AWS_ACCESS_KEY_ID'),
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+    ],
+    'transaction_authorizer' => [
+        'api_key' => ENV('TRANSACTION_AUTHORIZER_API_KEY'),
+        'base_url' => ENV('TRANSACTION_AUTHORIZER_API_URL')
     ]
 ];

@@ -7,5 +7,5 @@ use Domain\Modules\Account\Transaction\Entities\TransactionEntity;
 
 interface AuthorizeTransactionGateway
 {
-    public function getTransactionAuthorization(TransactionEntity $newAccountEntity): TransactionAuthorization;
+    public function getTransactionAuthorization(TransactionEntity $transactionEntity): TransactionAuthorization;
 }
