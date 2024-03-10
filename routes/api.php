@@ -16,4 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix("/v1")->group(function () {
     Route::post("accounts", [AccountControllerController::class, 'create']);
+    Route::post("accounts/{id}/transactions", [AccountControllerController::class, 'transaction']);
 });

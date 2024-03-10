@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Modules\Account;
+namespace App\Http\Requests\Modules\Account\Create;
 
 use App\Http\Requests\Generics\BaseRequest;
 use Domain\Modules\Account\Create\Entities\NewAccountEntity;
