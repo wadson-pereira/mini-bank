@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Adapters\Logger\LoggerAdapter;
 use App\Adapters\Modules\Account\AccountAdapter;
 use App\Adapters\Modules\Account\AuthorizedTransactionAdapter;
-use App\Adapters\Modules\Account\TransactionManagementAdpater;
+use App\Adapters\Modules\Account\TransactionManagementAdapter;
 use Domain\Generics\Logger\Logger;
 use Domain\Modules\Account\Create\Gateways\CreateAccountGateway;
 use Domain\Modules\Account\Transaction\Gateways\AuthorizeTransactionGateway;
@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(TransactionManagementGateway::class, function () {
-            return new TransactionManagementAdpater();
+            return new TransactionManagementAdapter();
         });
     }
 }

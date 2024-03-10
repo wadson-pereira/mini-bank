@@ -2,6 +2,7 @@
 
 namespace Domain\Modules\Account\Transaction\Gateways;
 
+use Domain\Modules\Account\Transaction\Collections\TransactionCollection;
 use Domain\Modules\Account\Transaction\Entities\Account;
 use Domain\Modules\Account\Transaction\Entities\Amount;
 use Domain\Modules\Account\Transaction\Entities\ProcessedTransactionEntity;
@@ -17,4 +18,6 @@ interface TransactionManagementGateway
     public function increasesAccountBalance(Account $account, Amount $amount): void;
 
     public function decreaseAccountBalance(Account $account, Amount $amount): void;
+
+    public function getScheduledTransactionForToday(): TransactionCollection;
 }
