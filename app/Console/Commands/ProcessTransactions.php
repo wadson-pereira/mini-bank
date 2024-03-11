@@ -18,9 +18,9 @@ class ProcessTransactions extends Command
 
     public function __construct(
         private readonly TransactionManagementGateway $transactionManagementGateway,
-        private readonly AuthorizeTransactionGateway  $authorizeTransactionGateway,
-        private readonly Logger                       $logger,
-        private readonly TransactionGateway           $transactionGateway
+        private readonly AuthorizeTransactionGateway $authorizeTransactionGateway,
+        private readonly Logger                      $logger,
+        private readonly TransactionGateway          $transactionGateway
     )
     {
         parent::__construct();

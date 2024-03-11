@@ -18,11 +18,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class AccountControllerController extends Controller
 {
     public function __construct(
-        private readonly CreateAccountGateway        $createAccountGateway,
+        private readonly CreateAccountGateway $createAccountGateway,
         private readonly TransactionManagementGateway $transactionManagementGateway,
         private readonly AuthorizeTransactionGateway $authorizeTransactionGateway,
-        private readonly TransactionGateway          $transactionGateway,
-        private readonly Logger                      $logger
+        private readonly TransactionGateway   $transactionGateway,
+        private readonly Logger               $logger
     )
     {
     }

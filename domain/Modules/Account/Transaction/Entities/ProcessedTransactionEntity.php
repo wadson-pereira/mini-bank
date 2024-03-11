@@ -9,7 +9,7 @@ class ProcessedTransactionEntity
     public function __construct(
         public readonly Account $sender,
         public readonly Account $receiver,
-        public readonly Amount  $amount,
+        public readonly Amount $amount,
         public readonly ProcessingStatus $processingStatus
     )
     {

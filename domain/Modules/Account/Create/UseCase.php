@@ -18,7 +18,7 @@ class UseCase
 
     public function __construct(
         private CreateAccountGateway $createAccountGateway,
-        private readonly Logger      $logger,
+        private readonly Logger $logger,
         private readonly UseCaseInstrumentation $instrumentation
     )
     {

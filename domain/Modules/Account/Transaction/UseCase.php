@@ -23,9 +23,9 @@ class UseCase
     public function __construct(
         private readonly TransactionManagementGateway $transactionManagementGateway,
         private readonly AuthorizeTransactionGateway $authorizeTransactionGateway,
-        private readonly TransactionGateway          $transactionGateway,
-        private readonly Logger                      $logger,
-        private readonly UseCaseInstrumentation      $instrumentation
+        private readonly TransactionGateway     $transactionGateway,
+        private readonly Logger                 $logger,
+        private readonly UseCaseInstrumentation $instrumentation
     )
     {
         $this->processingTransactionRule = new ProcessingTransactionRule($this->transactionManagementGateway, $this->authorizeTransactionGateway);
