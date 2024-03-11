@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Adapters\HttpClient\HttpClient;
 use App\Adapters\Logger\LoggerAdapter;
 use App\Adapters\Modules\Account\AccountAdapter;
-use App\Adapters\Modules\Account\AuthorizedTransactionAdapter;
+use App\Adapters\Modules\Account\TransactionAuthorizerAdapter;
 use App\Adapters\Modules\Account\TransactionManagementAdapter;
 use App\Adapters\Transaction\TransactionAdapter;
 use Domain\Generics\Gateways\Logger\Logger;
@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(AuthorizeTransactionGateway::class, function () {
-            return new AuthorizedTransactionAdapter(
+            return new TransactionAuthorizerAdapter(
                 client: new HttpClient(),
                 apiEnv: new AuthorizeServiceEnvs(
                     baseUrl: config('services.transaction_authorizer.base_url'),

@@ -4,14 +4,14 @@ namespace Domain\Modules\Account\Transaction\Exceptions;
 
 use Domain\Generics\Gateways\Exception\DomainException;
 
-class InsufficientFundsException extends \DomainException implements DomainException
+class TransactionWasNotAuthorized extends \DomainException implements DomainException
 {
     private array $data;
 
     public function __construct()
     {
-        $this->data['amount'] = [
-            "Insufficient funds for complete the transaction"
+        $this->data['transaction'] = [
+            "The transaction was not authorized by authorization authority"
         ];
         parent::__construct();
     }

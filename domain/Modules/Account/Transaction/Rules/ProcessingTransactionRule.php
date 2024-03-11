@@ -8,6 +8,7 @@ use Domain\Modules\Account\Transaction\Entities\ProcessedTransactionEntity;
 use Domain\Modules\Account\Transaction\Entities\TransactionEntity;
 use Domain\Modules\Account\Transaction\Enums\ProcessingStatus;
 use Domain\Modules\Account\Transaction\Exceptions\InsufficientFundsException;
+use Domain\Modules\Account\Transaction\Exceptions\TransactionWasNotAuthorized;
 use Domain\Modules\Account\Transaction\Gateways\AuthorizeTransactionGateway;
 use Domain\Modules\Account\Transaction\Gateways\TransactionManagementGateway;
 use Domain\Modules\Account\Transaction\Request\TransactionRequest;
@@ -27,6 +28,9 @@ class ProcessingTransactionRule
 
         if ($processedTransactionEntity->processingStatus === ProcessingStatus::INSUFFICIENT_FUNDS) {
             throw new InsufficientFundsException();
+        }
+        if ($processedTransactionEntity->processingStatus === ProcessingStatus::UNAUTHORIZED) {
+            throw new TransactionWasNotAuthorized();
         }
 
         if ($processedTransactionEntity->processingStatus === ProcessingStatus::COMPLETED) {

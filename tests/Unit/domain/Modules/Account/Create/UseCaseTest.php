@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Modulo\Account\Create;
+namespace Tests\Unit\domain\Modules\Account\Create;
 
 use Domain\Generics\Gateways\Instrumentation\UseCaseInstrumentation;
 use Domain\Generics\Gateways\Logger\Logger;

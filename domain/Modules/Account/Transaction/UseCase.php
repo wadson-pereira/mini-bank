@@ -7,6 +7,8 @@ use Domain\Generics\Gateways\Logger\Logger;
 use Domain\Generics\Gateways\Transaction\TransactionGateway;
 use Domain\Generics\Responses\BaseResponse;
 use Domain\Generics\Responses\ErrorResponse;
+use Domain\Modules\Account\Transaction\Exceptions\InsufficientFundsException;
+use Domain\Modules\Account\Transaction\Exceptions\TransactionWasNotAuthorized;
 use Domain\Modules\Account\Transaction\Gateways\AuthorizeTransactionGateway;
 use Domain\Modules\Account\Transaction\Gateways\TransactionManagementGateway;
 use Domain\Modules\Account\Transaction\Request\TransactionRequest;
@@ -38,6 +40,10 @@ class UseCase
             $this->transactionGateway->commit();
             $this->instrumentation->useCaseFinished();
             return new SuccessResponse($processedTransaction);
+        } catch (InsufficientFundsException|TransactionWasNotAuthorized $exception) {
+            $this->transactionGateway->commit();
+            $this->instrumentation->useCaseFinished();
+            return new ErrorResponse($exception);
         } catch (\Throwable $exception) {
             $this->transactionGateway->rollback();
             $this->logger->error($exception->getMessage(), context: [$exception]);

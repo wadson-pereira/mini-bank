@@ -8,7 +8,7 @@ use Domain\Modules\Account\Transaction\Entities\TransactionAuthorization;
 use Domain\Modules\Account\Transaction\Entities\TransactionEntity;
 use Domain\Modules\Account\Transaction\Gateways\AuthorizeTransactionGateway;
 
-class AuthorizedTransactionAdapter implements AuthorizeTransactionGateway
+class TransactionAuthorizerAdapter implements AuthorizeTransactionGateway
 {
     public function __construct(
         private readonly HttpClientGateway $client,
@@ -43,6 +43,7 @@ class AuthorizedTransactionAdapter implements AuthorizeTransactionGateway
                 authorized: $body->authorized
             );
         } catch (\Throwable $e) {
+            dd($e);
             return new TransactionAuthorization(
                 authorized: true
             );
