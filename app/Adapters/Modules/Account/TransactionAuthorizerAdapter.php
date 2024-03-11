@@ -43,7 +43,6 @@ class TransactionAuthorizerAdapter implements AuthorizeTransactionGateway
                 authorized: $body->authorized
             );
         } catch (\Throwable $e) {
-            dd($e);
             return new TransactionAuthorization(
                 authorized: true
             );
