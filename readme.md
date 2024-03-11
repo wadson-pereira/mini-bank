@@ -119,3 +119,7 @@ Atualmente quando um processamento falha, não é registrado que o mesmo falhou.
 comando rodar mais de uma vez por dia a mesma transação que falhou será reprocessada e falhará novamente.
 
 Utilizar factories para gerar as entities.
+
+Tratamento dos valores de entradas dos comandos para processamento de transações e criação de contas.
+
+Melhorar mensagem de saida dos comandos de criação de contas e processamento de transações.
