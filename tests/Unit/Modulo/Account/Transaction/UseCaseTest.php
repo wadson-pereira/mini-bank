@@ -3,8 +3,8 @@
 namespace Tests\Unit\Modulo\Account\Transaction;
 
 use Carbon\Carbon;
-use Domain\Generics\Instrumentation\UseCaseInstrumentation;
-use Domain\Generics\Logger\Logger;
+use Domain\Generics\Gateways\Instrumentation\UseCaseInstrumentation;
+use Domain\Generics\Gateways\Logger\Logger;
 use Domain\Generics\Responses\ErrorResponse;
 use Domain\Modules\Account\Transaction\Entities\Account;
 use Domain\Modules\Account\Transaction\Entities\Amount;

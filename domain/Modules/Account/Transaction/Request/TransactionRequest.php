@@ -8,6 +8,5 @@ class TransactionRequest
 {
     public function __construct(public readonly TransactionEntity $transactionEntity)
     {
-
     }
 }

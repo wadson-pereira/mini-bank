@@ -2,7 +2,7 @@
 
 namespace App\Adapters\Instrumentation;
 
-use Domain\Generics\Instrumentation\UseCaseInstrumentation;
+use Domain\Generics\Gateways\Instrumentation\UseCaseInstrumentation;
 use Prometheus\Counter;
 use Prometheus\Histogram;
 

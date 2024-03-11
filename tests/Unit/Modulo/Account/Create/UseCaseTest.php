@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Modulo\Account\Create;
 
-use Domain\Generics\Instrumentation\UseCaseInstrumentation;
-use Domain\Generics\Logger\Logger;
+use Domain\Generics\Gateways\Instrumentation\UseCaseInstrumentation;
+use Domain\Generics\Gateways\Logger\Logger;
 use Domain\Generics\Responses\ErrorResponse;
 use Domain\Modules\Account\Create\Entities\CreatedAccountEntity;
 use Domain\Modules\Account\Create\Entities\NewAccountEntity;

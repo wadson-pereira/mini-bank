@@ -7,7 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Modules\Account\Create\CreateAccountHttpRequest;
 use App\Http\Requests\Modules\Account\Transaction\CreateTransactionHttpRequest;
 use App\Http\Responses\ResponseFactory;
-use Domain\Generics\Logger\Logger;
+use Domain\Generics\Gateways\Logger\Logger;
+use Domain\Generics\Gateways\Transaction\TransactionGateway;
 use Domain\Modules\Account\Create\Gateways\CreateAccountGateway;
 use Domain\Modules\Account\Create\UseCase;
 use Domain\Modules\Account\Transaction\Gateways\AuthorizeTransactionGateway;
@@ -17,10 +18,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class AccountControllerController extends Controller
 {
     public function __construct(
-        private readonly CreateAccountGateway         $createAccountGateway,
+        private readonly CreateAccountGateway        $createAccountGateway,
         private readonly TransactionManagementGateway $transactionManagementGateway,
-        private readonly AuthorizeTransactionGateway  $authorizeTransactionGateway,
-        private readonly Logger                       $logger
+        private readonly AuthorizeTransactionGateway $authorizeTransactionGateway,
+        private readonly TransactionGateway          $transactionGateway,
+        private readonly Logger                      $logger
     )
     {
     }
@@ -41,6 +43,7 @@ class AccountControllerController extends Controller
         $createAccountUseCase = new \Domain\Modules\Account\Transaction\UseCase(
             transactionManagementGateway: $this->transactionManagementGateway,
             authorizeTransactionGateway: $this->authorizeTransactionGateway,
+            transactionGateway: $this->transactionGateway,
             logger: $this->logger,
             instrumentation: new UseCaseInstrumentationAdapter(useCaseClass: \Domain\Modules\Account\Transaction\UseCase::class)
         );

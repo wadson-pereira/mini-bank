@@ -1,6 +1,6 @@
 <?php
 
-namespace  Domain\Generics\Instrumentation;
+namespace Domain\Generics\Gateways\Instrumentation;
 
 interface UseCaseInstrumentation
 {

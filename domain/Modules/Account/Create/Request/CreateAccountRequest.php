@@ -8,6 +8,5 @@ class CreateAccountRequest
 {
     public function __construct(public readonly NewAccountEntity $accountEntity)
     {
-
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Adapters\Logger;
 
-use Domain\Generics\Logger\Logger;
+use Domain\Generics\Gateways\Logger\Logger;
 use Illuminate\Support\Facades\Log;
 
 class LoggerAdapter implements Logger

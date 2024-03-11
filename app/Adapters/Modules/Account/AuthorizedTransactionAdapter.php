@@ -11,7 +11,7 @@ use Domain\Modules\Account\Transaction\Gateways\AuthorizeTransactionGateway;
 class AuthorizedTransactionAdapter implements AuthorizeTransactionGateway
 {
     public function __construct(
-        private readonly HttpClientGateway    $client,
+        private readonly HttpClientGateway $client,
         private readonly AuthorizeServiceEnvs $apiEnv
     )
     {

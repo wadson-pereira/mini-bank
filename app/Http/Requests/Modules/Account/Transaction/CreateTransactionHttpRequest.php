@@ -11,7 +11,6 @@ use Domain\Modules\Account\Transaction\Request\TransactionRequest;
 
 class CreateTransactionHttpRequest extends BaseRequest
 {
-
     public function rules(): array
     {
         return [

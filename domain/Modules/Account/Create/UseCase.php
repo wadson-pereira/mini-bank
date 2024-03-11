@@ -2,8 +2,8 @@
 
 namespace Domain\Modules\Account\Create;
 
-use Domain\Generics\Instrumentation\UseCaseInstrumentation;
-use Domain\Generics\Logger\Logger;
+use Domain\Generics\Gateways\Instrumentation\UseCaseInstrumentation;
+use Domain\Generics\Gateways\Logger\Logger;
 use Domain\Generics\Responses\BaseResponse;
 use Domain\Generics\Responses\ErrorResponse;
 use Domain\Modules\Account\Create\Gateways\CreateAccountGateway;
@@ -17,8 +17,8 @@ class UseCase
 
 
     public function __construct(
-        private CreateAccountGateway            $createAccountGateway,
-        private readonly Logger                 $logger,
+        private CreateAccountGateway $createAccountGateway,
+        private readonly Logger      $logger,
         private readonly UseCaseInstrumentation $instrumentation
     )
     {

@@ -6,7 +6,6 @@ use App\Http\Requests\Generics\BaseRequest;
 use Domain\Modules\Account\Create\Entities\NewAccountEntity;
 use Domain\Modules\Account\Create\Request\CreateAccountRequest;
 
-
 class CreateAccountHttpRequest extends BaseRequest
 {
     public function rules(): array
@@ -22,10 +21,9 @@ class CreateAccountHttpRequest extends BaseRequest
         $validated = $this->validated();
 
         return new CreateAccountRequest(new NewAccountEntity(
-                name: $validated['name'],
-                balance: $validated['balance']
-            )
-        );
+            name: $validated['name'],
+            balance: $validated['balance']
+        ));
     }
 
     protected function prepareForValidation(): void

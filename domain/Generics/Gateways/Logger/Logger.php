@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Generics\Logger;
+namespace Domain\Generics\Gateways\Logger;
 
 interface Logger
 {

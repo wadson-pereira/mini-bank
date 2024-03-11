@@ -6,7 +6,5 @@ class Account
 {
     public function __construct(public readonly int $id)
     {
-
     }
-
 }

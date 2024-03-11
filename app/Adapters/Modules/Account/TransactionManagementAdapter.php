@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionManagementAdapter implements TransactionManagementGateway
 {
-
     public function processTransaction(TransactionEntity $transactionEntity, ProcessingStatus $processingStatus): ProcessedTransactionEntity
     {
 

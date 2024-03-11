@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Adapters\Instrumentation\UseCaseInstrumentationAdapter;
-use Domain\Generics\Logger\Logger;
+use Domain\Generics\Gateways\Logger\Logger;
 use Domain\Modules\Account\Create\Entities\NewAccountEntity;
 use Domain\Modules\Account\Create\Gateways\CreateAccountGateway;
 use Domain\Modules\Account\Create\Request\CreateAccountRequest;
@@ -13,16 +13,15 @@ use Illuminate\Console\Command;
 
 class CreateBankAccount extends Command
 {
-
     protected $signature = 'app:create-bank-account {name} {balance}';
     protected $description = 'Create an Bank Account by name and amount';
 
     public function __construct(
         private readonly CreateAccountGateway $createAccountGateway,
-        private readonly Logger               $logger)
+        private readonly Logger $logger
+    )
     {
         parent::__construct();
-
     }
 
     public function handle(): void

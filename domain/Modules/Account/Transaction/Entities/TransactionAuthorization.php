@@ -6,7 +6,5 @@ class TransactionAuthorization
 {
     public function __construct(public readonly bool $authorized)
     {
-
     }
-
 }
