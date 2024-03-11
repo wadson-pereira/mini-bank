@@ -46,14 +46,7 @@ Requisitos:
 - Prometheus
 - Granfana
 
-### O que foi implementado:
--   Listar produtos disponíveis
--   Cadastrar nova venda
--   Consultar vendas realizadas
-
 ### Como rodar o projeto
-
-
 Subir os serviços
 
     docker-compose up -d
