@@ -13,7 +13,7 @@ class CreateAccountRule
     {
     }
 
-    public function execute(CreateAccountRequest $request): createdAccountEntity
+    public function execute(CreateAccountRequest $request): CreatedAccountEntity
     {
         return $this->createAccountGateway->createAccount($request->accountEntity);
     }

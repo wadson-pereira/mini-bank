@@ -26,12 +26,8 @@ class ProcessingTransactionRule
         $processedTransactionEntity = $this->transactionManagementGateway->processTransaction(transactionEntity: $transaction, processingStatus: $processingStatus);
 
         if ($processedTransactionEntity->processingStatus === ProcessingStatus::COMPLETED) {
-            $this->transactionManagementGateway->increasesAccountBalance($processedTransactionEntity->receiver, new Amount(
-                value: $processedTransactionEntity->amount->value
-            ));
-            $this->transactionManagementGateway->decreaseAccountBalance($processedTransactionEntity->sender, new Amount(
-                value: $processedTransactionEntity->amount->value
-            ));
+            $this->transactionManagementGateway->increasesAccountBalance($processedTransactionEntity->receiver, $processedTransactionEntity->amount);
+            $this->transactionManagementGateway->decreaseAccountBalance($processedTransactionEntity->sender, $processedTransactionEntity->amount);
         }
         return $processedTransactionEntity;
     }
